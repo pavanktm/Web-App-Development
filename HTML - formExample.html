@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<form id="register" method="post">
+  <header>
+    <h1>Sign Me Up!</h1>
+    <p>I would like to receive your fine publication.</p>
+  </header>
+
+  <ul>
+    <li>
+      <label for="register-name">My name is:</label>
+      <input type="range" id="register-name" name="name" autofocus>
+    </li>
+	<br />
+    <li>
+      <label for="address">My email address is:</label>
+      <input type="text" id="address" name="address" value="abcd" readonly>
+    </li>
+    <li>
+      <label for="url">My website is located at:</label>
+      <input type="text" id="url" name="url" aria-required="true" required>
+    </li>
+    <li> 
+      <label for="password">I would like my password to be:</label>
+      <p>(at least 6 characters, no spaces)</p>
+      <input type="password" id="password" name="password">
+
+    </li>
+    <li>
+      <label for="rating">On a scale of 1 to 10, my knowledge of 
+↵HTML5 is:</label>
+      <input type="text" name="rating" id="rating" autocomplete="off">
+    </li>
+    <li>
+      <label for="startdate">Please start my subscription on:
+↵</label>
+      <input type="time" id="startdate" name="startdate">
+    </li>
+    <li>
+      <label for="quantity">I would like to receive <input 
+↵type="text" name="quantity" id="quantity"> copies of <cite>
+↵The HTML5 Herald</cite>.</label>
+    </li>
+    <li>
+      <label for="upsell">Also sign me up for <cite>The CSS3 
+↵Chronicle</cite></label>
+      <input type="checkbox" id="upsell" name="upsell" value="CSS 
+↵Chronicle">
+    </li>
+    <li>
+      <input type="submit" id="register-submit" value="Send Post 
+↵Haste">
+    </li>
+  </ul>
+  
+  <label for="favcolor">Favorite Color</label>
+<input type="color" list="colors" id="favcolor" name="favcolor">
+
+<datalist id="colors">
+  <option value="#0000FF" label="blue">
+  <option value="#008000" label="green">
+  <option value="#ff0000" label="red">
+  <option value="#663399" label="RebeccaPurple">
+</datalist><br /><br />
+
+<label for="meter"> Meter element</label>
+	<meter min="0" max="10" value="5" optimum="6"></meter> <br /> <br />
+	
+<label for="progress">Progress element</label>
+	<progress min="0" max="10" value="4" low="5" high="8" ></progress><br /><br />
+	
+<label for="output">Output element</label>
+	<output><strong>A B C D</strong></output><br /><br />
+	
+<label for="output">Output element - Content Editable</label>
+	<output contenteditable="true"><strong>A B C D</strong></output><br /><br />
+	
+<label for="output"contenteditable="true">Label element - Content Editable</label>
+	
+</form>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!Doctype html>
+	<head>
+	<style>
+	@keyframes moveRight { 
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes appearDisappear { 
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+}
+
+@keyframes bgMove {
+  100% {
+    background-position: 120% 0;
+  }
+}
+	.mainDiv{
+		width: 10%;
+		height: 100px;
+		background-color: red;
+		justifyContent: center;
+		align-Items: center;
+	}
+	.subDiv{
+		display: block;
+		text-decoration: none;
+	  border:  5px double;
+	  color: #ffffff; 
+	  background-color: #484848; 
+	  text-align: center;
+	  margin: 5px 5px 9px 5px;
+	  padding: 15px 0;
+	  position: relative;
+		transition: 1s;
+		
+	}
+	.subDiv:hover{
+		transition-property: transform, color; 
+		transform: rotate(10deg) skew(20deg, 50deg) translate(10%, -10%);
+		transform-origin: 0 0;
+		transition-duration: 4s;
+		transition-delay: 1s;
+		background-color: #00000;
+animation-name: appearDisappear;		
+	}
+	.subDiv label:hover{
+		transform: rotate(10deg) scale(2);
+		
+		
+	}
+	</style>
+	</head>
+	<body>
+		<div class="mainDiv">
+			<div class="subDiv">
+				<label> Hello </label>
+			</div>
+			<!-- <div class="subDiv">
+				<label> Hello </label>
+			</div>
+			<div class="subDiv">
+				<label> Hello </label>
+			</div>
+			<div class="subDiv">
+				<label> Hello </label>
+			</div>
+			<div class="subDiv">
+				<label> Hello </label>
+			</div>
+			<div class="subDiv">
+				<label> Hello </label>
+			</div>
+			<div class="subDiv">
+				<label> Hello </label>
+			</div> -->
+		</div>
+	</body>
+</html>

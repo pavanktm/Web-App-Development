@@ -1,0 +1,165 @@
+CSS Selectors :-
+1) Relational Selectors:- Based on the relation to other elements
+	Descendant combinator (E F)
+		You should definitely be familiar with this one. The descendant selector targets any element F that is 
+		a descendant (child, grandchild, great grandchild, and so on) of an element E. 
+		For example, ol li targets li elements that are inside ordered lists. 
+		This would include li elements in a ul that’s nested in an ol, which might not be what you want.
+
+	Child combinator (E > F)
+		This selector matches any element F that is a direct child of element E—any further nested elements 
+		will be ignored. Continuing the example, ol > li would only target li elements directly inside the ol, 
+		and would omit those nested inside a ul.
+
+	Adjacent sibling, or next sibling selector (E + F)
+		This will match any element F that shares the same parent as E, and comes directly after E in the markup. 
+		For example, li + li will target all li elements except the first li in a given container.
+
+	General sibling or following sibling selector (E ~ F)
+		This one’s a little trickier. It will match any element F that shares the same parent as any E 
+		and comes after it in the markup. So, h1 ~ h2 will match any h2 that follows an h1, as long as they 
+		both share the same direct parent—that is, as long as the h2 is not nested in any other element.
+		
+2) Attribute Selectors:- Based on the attributes
+	E[attr]
+	Matches any element E that has the attribute attr regardless of the attribute’s value. 
+	We made use of this back in Chapter 4 to style required inputs; input:required works in the latest 
+	browsers, but input[required] has the same effect and works in IE7 and IE8 as well.
+
+	E[attr=val]
+	Matches any element E that has the attribute attr with the exact value val. While not new, 
+	it’s helpful in targeting form input types; for instance, targeting checkboxes with input[type=checkbox].
+
+	E[attr|=val]
+	Matches any element E whose attribute attr either has the value val or begins with val-. 
+	This is most commonly used for the lang attribute. For example, p[lang|="en"] would match any paragraph 
+	that has been defined as being in English whether it be UK or US English with &lt;p lang="en-uk"> 
+	or &lt;p lang="en-us">.
+
+	E[attr~=val]
+	Matches any element E whose attribute attr has within its value the full word val, 
+	surrounded by whitespace. For example, .info[title~=more] would match any element with the class 
+	info that had a title attribute containing the word “more,” such as “Click here for more information.”
+
+	E[attr^=val]
+	Matches any element E whose attribute attr starts with the value val. In other words, 
+	the val matches the beginning of the attribute value.
+
+	E[attr$=val]
+	Matches any element E whose attribute attr ends in val. In other words, 
+	the val matches the end of the attribute value.
+
+	E[attr*=val]
+	Matches any element E whose attribute attr matches val anywhere within the attribute. 
+	It is similar to E[attr~=val], except the val can be part of a word. 
+	Using the same example as before, .fakelink[title~=info] {} would match any element with the class 
+	fakelink that has a title attribute containing the string info, such as “Click here for more information.”
+	
+3) Pseudo-classes:-
+	It's likely that you are already familiar with some of the user interaction pseudo classes, namely
+	:hover, :link, :visited, :active and :focus
+	Others are :enabled, :disabled, :checked, :indeterminate, :target, :default, :valid, :invalid, :in-range,
+	:out-of-range, :required, :optional, :read-only, :read-write
+	
+4) Structural Pseudo classes:-
+	
+	:root -> The Root element, which is the html element in our html files
+	
+	E:nth-child(n)
+	The element E that is the nth child of its parent. The n parameter is explained in the note below.
+
+	E:nth-last-child(n)
+	The element F that is the nth child of its parent E, counting backwards from the last one. li:nth-last-child(1) would match the last item in any list—this is the same as li:last-child (see the note below).
+
+	E:nth-of-type(n)
+	The element that is the nth element of its type in a given parent element.The difference between :nth-child and :nth-of-type is explained in the note below.
+
+	E:nth-last-of-type(n)
+	Like nth-of-type(n), except counting backwards from the last element in a parent.
+
+	E:first-child
+	The element E if E is the first child of its parent. This is the same as E:nth-child(1).
+
+	E:last-child
+	The element E if E is the last child of its parent, same as E:nth-last-child(1).
+
+	E:first-of-type
+	The same as :nth-of-type(1).
+
+	E:last-of-type
+	The same as :nth-last-of-type(1).
+
+	E:only-child
+	Element E if E is the only child of its parent.
+
+	E:only-of-type
+	Element E if E is the only element of type E that is a direct child of its parent element.
+	
+	E:empty
+	An element that has no children; this includes text nodes, so <p>hello</p> and <p> </p> will not be matched 
+	by p:empty, but <p></p> and <p><!-- comment --></p> will be. 
+	This selector also matches empty or void elements, such as <br> and <input>. 
+	In CSS Selectors Level 4, we’ll get p:blank that will match <p> </p>.
+	
+5) Pseudo Elements and generated content
+	In addition to pseudo-classes, CSS gives us access to pseudo-elements. 
+	Pseudo-elements allow you to target text that is part of the document, but not otherwise targetable 
+	in the document tree. Pseudo-classes enable us to target existing elements. 
+	Pseudo-elements, on the other hand, enable us to target content based on the structure of the document 
+	when there are no actual elements or DOM nodes to target.
+
+	For example, all text nodes have a first letter and a first line, but how can you target them 
+	without wrapping them in a span, especially when you don’t know exactly where the first line will wrap? 
+	CSS provides the ::first-letter and ::first-line pseudo-elements that match the first letter and first 
+	line of a text node respectively. 
+	These can alternatively be written with just a single colon: :first-line and :first-letter.
+	
+6) Generated Content
+
+	The ::before and ::after pseudo-elements don’t refer to content that exists in the markup, 
+	but rather to a location where you can insert additional content, generated right there in your CSS. 
+	While this generated content won’t become part of the DOM, it can be styled.
+
+	To generate content for a pseudo-element, use the content property. 
+	For example, let’s say when printing a document that you wanted all external links on your page to be 
+	followed by the link’s URL in parentheses, 
+	enabling users to know where the links led even when they’re unclickable as they’re looking at a 
+	printed page. Rather than hardcoding the URLs into your markup, you can use the combination of an 
+	attribute selector and the ::after pseudo-element:
+
+	a[href^=http]:after {
+	  content: " (" attr(href) ")";
+	}
+
+	attr() allows you to access any attribute of the selected element, coming in handy here for displaying 
+	the link’s target. And you’ll remember from the attribute selectors section that a[href^=http] means 
+	“any a element whose href attribute begins with http”; in other words, external links. 
+	To be more precise, we could have written a[href^="http://"], a[href^="https://"].
+
+	Here’s another example:
+
+	a[href$=".pdf"] {
+	  background: transparent url(pdficon.gif) 0 50% no-repeat;
+	  padding-left: 20px;
+	}
+	a[href$=".pdf"]:after {
+	  content: " (PDF)";
+	}
+	Those styles will add a PDF icon and the text “ (PDF)” after links to PDFs. 
+	Remember that the [attr$=val] selector matches the end of an attribute—so document.pdf will match but pdf.html won't.
+
+	::selection
+	The ::selection pseudo-element matches user-selected or highlighted text.
+
+	This is supported in all browsers since IE9, but requires the -moz vendor prefix for Firefox. 
+	Let’s use it on The HTML5 Herald to bring the selection background and text color in line with the 
+	monochrome style of the rest of the site:
+
+	::-moz-selection { 
+	  background: #484848;
+	  color: #fff;
+	} 
+	::selection { 
+	  background: #484848; 
+	  color: #fff; 
+	}
